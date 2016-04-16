@@ -2,9 +2,20 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.8'
+gem 'rails', '~> 4.2', '>= 4.2.5'
+
+# Added for Heroku
+group :production do
+	gem 'rails_12factor'
+	gem 'pg'
+end
+
+# Added for Heroku
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+group :development, :test do
+	gem 'sqlite3'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -37,3 +48,40 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
+
+gem 'coffee-script-source', '1.8.0'
+
+# PAPERCLIP uploading pics
+gem 'paperclip', :git=> 'https://github.com/thoughtbot/paperclip', :ref => '523bd46c768226893f23889079a7aa9c73b57d68'
+
+# PAPERCLIP Amazon AWS
+gem 'aws-sdk'
+
+# AUTHENTICATION
+gem 'devise'
+
+# AUTHORIZATION
+gem 'cancancan'
+
+# PAGINATION
+gem 'will_paginate', '~> 3.0.6'
+
+# RSPEC
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+  gem 'guard'
+  gem 'guard-rspec', require: false
+  gem 'spork-rails'
+  gem 'guard-spork'
+end
+
+# FACTORYGIRL
+gem "factory_girl_rails", "~> 4.0"
+
+gem 'stripe'
+
+gem 'byebug'
+
+gem "brakeman", :require => false
+
+gem 'angularjs-rails'
